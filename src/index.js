@@ -1,0 +1,1 @@
+export selectorForSlice from './selector-for-slice'
