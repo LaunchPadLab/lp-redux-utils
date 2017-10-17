@@ -3,6 +3,8 @@
 ### Table of Contents
 
 -   [selectorForSlice](#selectorforslice)
+-   [setState](#setstate)
+-   [unsetState](#unsetstate)
 
 ## selectorForSlice
 
@@ -15,7 +17,7 @@ Given the path of a certain state slice, returns a function that can be used to 
 **Examples**
 
 ```javascript
-import { selectorForSlice } from 'lp-utils'
+import { selectorForSlice } from 'lp-redux-utils'
 
 const state = {
   userSlice: {
@@ -41,3 +43,54 @@ export { selectors }
 ```
 
 Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function that can be used to create state selectors.
+
+## setState
+
+A helper function for creating simple "setter" reducers. 
+Given a path, it sets the state at that path to the payload of an action.
+
+**Parameters**
+
+-   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the part of the state that will be set
+-   `transform` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function with arguments `(action, state)` that can be used to transform the value that will be set. The default transform function simply returns the action's payload.
+
+**Examples**
+
+```javascript
+import { setState } from 'lp-redux-utils'
+import { createAction, handleActions } from 'redux-actions'
+
+const setCount = createAction('SET_COUNT')
+const setCountInverse = createAction('SET_COUNT_INVERSE')
+
+const reducer = handleActions({
+  [setCount]: setState('count'),
+  [setCountInverse]: setState('count', action => action.payload * -1)
+})
+```
+
+Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function that can be used in a reducer to handle an action.
+
+## unsetState
+
+A helper function for creating simple reducers that "unset" a piece of state.
+Given a path, it calls lodash [unset ](https://lodash.com/docs/#unset) on the state at that path.
+
+**Parameters**
+
+-   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the part of state to unset
+
+**Examples**
+
+```javascript
+import { unsetState } from 'lp-redux-utils'
+import { createAction, handleActions } from 'redux-actions'
+
+const clearCount = createAction('CLEAR_COUNT')
+
+const reducer = handleActions({
+  [clearCount]: unsetState('count'),
+})
+```
+
+Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function that can be used in a reducer to handle an action.
