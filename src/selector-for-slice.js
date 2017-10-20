@@ -10,7 +10,7 @@ import { getOr } from './utils'
  *
  * @example
  *
- *import { selectorForSlice } from 'lp-utils'
+ *import { selectorForSlice } from 'lp-redux-utils'
  *
  * const state = {
  *   userSlice: {

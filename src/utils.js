@@ -1,3 +1,9 @@
+export {
+  identity,
+} from 'lodash'
+
 export { 
-  getOr 
+  getOr,
+  set,
+  unset,
 } from 'lodash/fp'
