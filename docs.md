@@ -52,7 +52,7 @@ Given a path, it sets the state at that path to the payload of an action.
 **Parameters**
 
 -   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the part of the state that will be set
--   `transform` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function with arguments `(action, state)` that can be used to transform the value that will be set. The default transform function simply returns the action's payload.
+-   `transform` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the preexisting data at the `path`. The default transform function simply returns the action's payload.
 
 **Examples**
 

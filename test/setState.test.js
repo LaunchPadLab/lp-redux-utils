@@ -6,12 +6,13 @@ test('setState: sets path to action payload', () => {
   expect(setState('foo.bar')(state, action)).toEqual({ foo: { bar: 'test' } })
 })
 
-test('setState: transform function is called with action and state', () => {
-  const state = {}
+test('setState: transform function is called with action, state and slice', () => {
+  const slice = 'foo'
+  const state = { foo: slice }
   const action = { payload: 'test' }
   const transform = jest.fn()
-  setState('foo.bar', transform)(state, action)
-  expect(transform).toHaveBeenCalledWith(action, state)
+  setState('foo', transform)(state, action)
+  expect(transform).toHaveBeenCalledWith(action, state, slice)
 })
 
 test('setState: transform function transforms the value that is set', () => {

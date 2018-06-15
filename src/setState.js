@@ -1,4 +1,4 @@
-import { set } from './utils'
+import { set, get } from 'lodash/fp'
 
 /**
  *
@@ -8,7 +8,7 @@ import { set } from './utils'
  * @name setState
  * @type Function
  * @param {String} path - Path to the part of the state that will be set
- * @param {Function} transform - A function with arguments `(action, state)` that can be used to transform the value that will be set. The default transform function simply returns the action's payload.
+ * @param {Function} transform - A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the preexisting data at the `path`. The default transform function simply returns the action's payload.
  * @returns {Function} - A function that can be used in a reducer to handle an action.
  *
  * @example
@@ -27,12 +27,13 @@ import { set } from './utils'
 **/
 
 function defaultTransform (action) {
-  return action.payload
+  return get('payload', action)
 }
 
 function setState (path, transform=defaultTransform) {
   return function reducer (state, action) {
-    return set(path, transform(action, state), state)
+    const slice = get(path, state)
+    return set(path, transform(action, state, slice), state)
   }
 }
 
