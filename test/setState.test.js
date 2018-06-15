@@ -18,6 +18,6 @@ test('setState: transform function is called with action, state and slice', () =
 test('setState: transform function transforms the value that is set', () => {
   const state = { count: 5 }
   const action = { type: 'ADD_TO_COUNT', payload: 10 }
-  const reducer = setState('count', ({ payload }, state) => state.count + payload)
+  const reducer = setState('count', ({ payload }, state, count) => count + payload)
   expect(reducer(state, action)).toEqual({ count: 15 })
 })

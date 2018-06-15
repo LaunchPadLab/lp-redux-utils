@@ -8,7 +8,7 @@ import { set, get } from 'lodash/fp'
  * @name setState
  * @type Function
  * @param {String} path - Path to the part of the state that will be set
- * @param {Function} transform - A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the preexisting data at the `path`. The default transform function simply returns the action's payload.
+ * @param {Function} transform - A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload.
  * @returns {Function} - A function that can be used in a reducer to handle an action.
  *
  * @example
@@ -18,10 +18,12 @@ import { set, get } from 'lodash/fp'
  * 
  * const setCount = createAction('SET_COUNT')
  * const setCountInverse = createAction('SET_COUNT_INVERSE')
+ * const doubleExistingCount = createAction('DOUBLE_EXISTING_COUNT')
  *
  * const reducer = handleActions({
  *   [setCount]: setState('count'),
  *   [setCountInverse]: setState('count', action => action.payload * -1)
+ *   [doubleExistingCount]: setState('count', (action, state, count) => count * 2)
  * })
  *
 **/
