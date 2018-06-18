@@ -52,7 +52,7 @@ Given a path, it sets the state at that path to the payload of an action.
 **Parameters**
 
 -   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the part of the state that will be set
--   `transform` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function with arguments `(action, state)` that can be used to transform the value that will be set. The default transform function simply returns the action's payload.
+-   `transform` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload.
 
 **Examples**
 
@@ -62,10 +62,12 @@ import { createAction, handleActions } from 'redux-actions'
 
 const setCount = createAction('SET_COUNT')
 const setCountInverse = createAction('SET_COUNT_INVERSE')
+const doubleExistingCount = createAction('DOUBLE_EXISTING_COUNT')
 
 const reducer = handleActions({
   [setCount]: setState('count'),
   [setCountInverse]: setState('count', action => action.payload * -1)
+  [doubleExistingCount]: setState('count', (action, state, count) => count * 2)
 })
 ```
 

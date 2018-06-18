@@ -1,3 +1,3 @@
-export selectorForSlice from './selector-for-slice'
-export setState from './set-state'
-export unsetState from './unset-state'
+export selectorForSlice from './selectorForSlice'
+export setState from './setState'
+export unsetState from './unsetState'
