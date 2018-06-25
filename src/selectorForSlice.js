@@ -1,4 +1,4 @@
-import { getOr } from './utils'
+import { getOr } from 'lodash/fp'
 
 /**
  *
@@ -38,8 +38,8 @@ import { getOr } from './utils'
 **/
 
 export default function selectorForSlice (slicePath) {
-  return function (path, defaultValue) {
-    return function (state) {
+  return function createSelector (path, defaultValue) {
+    return function select (state) {
       return getOr(defaultValue, `${slicePath}.${path}`, state)
     }
   }

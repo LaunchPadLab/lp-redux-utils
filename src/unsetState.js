@@ -1,4 +1,4 @@
-import { unset } from './utils'
+import { unset } from 'lodash/fp'
 
 /**
  *
