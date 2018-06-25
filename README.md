@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/%40launchpadlab%2Flp-redux-utils.svg)](https://badge.fury.io/js/%40launchpadlab%2Flp-redux-utils)
+[![npm version](https://badge.fury.io/js/%40launchpadlab%2Flp-redux-utils.svg)](https://badge.fury.io/js/%40launchpadlab%2Flp-redux-utils) [![Greenkeeper badge](https://badges.greenkeeper.io/LaunchPadLab/lp-redux-utils.svg)](https://greenkeeper.io/)
 
 # lp-redux-utils
 Utility functions for redux applications.
