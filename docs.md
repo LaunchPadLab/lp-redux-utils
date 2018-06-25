@@ -2,19 +2,25 @@
 
 ### Table of Contents
 
--   [selectorForSlice](#selectorforslice)
--   [setState](#setstate)
--   [unsetState](#unsetstate)
+-   [selectorForSlice][1]
+    -   [Parameters][2]
+    -   [Examples][3]
+-   [setState][4]
+    -   [Parameters][5]
+    -   [Examples][6]
+-   [unsetState][7]
+    -   [Parameters][8]
+    -   [Examples][9]
 
 ## selectorForSlice
 
 Given the path of a certain state slice, returns a function that can be used to create state selectors (helpful for `mapStateToProps()`).
 
-**Parameters**
+### Parameters
 
--   `slicePath` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to slice of state.
+-   `slicePath` **[String][10]** Path to slice of state.
 
-**Examples**
+### Examples
 
 ```javascript
 import { selectorForSlice } from 'lp-redux-utils'
@@ -40,21 +46,24 @@ export { selectors }
 // These selectors can be called in mapStateToProps() like so:
 // selectors.user(state) => { name: 'test' }
 // selectors.username(state) => 'test'
+
+
+*
 ```
 
-Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function that can be used to create state selectors.
+Returns **[Function][11]** A function that can be used to create state selectors.
 
 ## setState
 
 A helper function for creating simple "setter" reducers. 
 Given a path, it sets the state at that path to the payload of an action.
 
-**Parameters**
+### Parameters
 
--   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the part of the state that will be set
--   `transform` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function with arguments `(action, state)` that can be used to transform the value that will be set. The default transform function simply returns the action's payload.
+-   `path` **[String][10]** Path to the part of the state that will be set
+-   `transform` **[Function][11]** A function with arguments `(action, state)` that can be used to transform the value that will be set. The default transform function simply returns the action's payload.
 
-**Examples**
+### Examples
 
 ```javascript
 import { setState } from 'lp-redux-utils'
@@ -67,20 +76,22 @@ const reducer = handleActions({
   [setCount]: setState('count'),
   [setCountInverse]: setState('count', action => action.payload * -1)
 })
+
+*
 ```
 
-Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function that can be used in a reducer to handle an action.
+Returns **[Function][11]** A function that can be used in a reducer to handle an action.
 
 ## unsetState
 
 A helper function for creating simple reducers that "unset" a piece of state.
-Given a path, it calls lodash [unset ](https://lodash.com/docs/#unset) on the state at that path.
+Given a path, it calls lodash [unset ][12] on the state at that path.
 
-**Parameters**
+### Parameters
 
--   `path` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path to the part of state to unset
+-   `path` **[String][10]** Path to the part of state to unset
 
-**Examples**
+### Examples
 
 ```javascript
 import { unsetState } from 'lp-redux-utils'
@@ -91,6 +102,32 @@ const clearCount = createAction('CLEAR_COUNT')
 const reducer = handleActions({
   [clearCount]: unsetState('count'),
 })
+
+*
 ```
 
-Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** A function that can be used in a reducer to handle an action.
+Returns **[Function][11]** A function that can be used in a reducer to handle an action.
+
+[1]: #selectorforslice
+
+[2]: #parameters
+
+[3]: #examples
+
+[4]: #setstate
+
+[5]: #parameters-1
+
+[6]: #examples-1
+
+[7]: #unsetstate
+
+[8]: #parameters-2
+
+[9]: #examples-2
+
+[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[12]: https://lodash.com/docs/#unset
