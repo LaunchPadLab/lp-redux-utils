@@ -61,7 +61,7 @@ Given a path, it sets the state at that path to the payload of an action.
 ### Parameters
 
 -   `path` **[String][10]** Path to the part of the state that will be set
--   `transform` **[Function][11]** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. If the same value is always set, it can be passed in place of the transform function.
+-   `transform` **[Function][11]** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. To set the state to a constant value, simply pass the value in place of the transform function.
 
 ### Examples
 

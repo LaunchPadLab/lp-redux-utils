@@ -9,7 +9,7 @@ import { set, get } from 'lodash/fp'
  * @name setState
  * @type Function
  * @param {String} path - Path to the part of the state that will be set
- * @param {Function} transform - A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. If the same value is always set, it can be passed in place of the transform function.
+ * @param {Function} transform - A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. To set the state to a constant value, simply pass the value in place of the transform function.
  * @returns {Function} - A function that can be used in a reducer to handle an action.
  *
  * @example
