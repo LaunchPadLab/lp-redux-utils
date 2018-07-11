@@ -21,3 +21,10 @@ test('setState: transform function transforms the value that is set', () => {
   const reducer = setState('count', ({ payload }, state, count) => count + payload)
   expect(reducer(state, action)).toEqual({ count: 15 })
 })
+
+test('setState: transform function can be a constant value', () => {
+  const state = { count: 5 }
+  const action = { type: 'RESET_COUNT' }
+  const reducer = setState('count', 0)
+  expect(reducer(state, action)).toEqual({ count: 0 })
+})
