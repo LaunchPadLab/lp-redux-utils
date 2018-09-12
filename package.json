@@ -42,7 +42,7 @@
     "rimraf": "^2.5.4"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "redux": ">=2.0.0"
