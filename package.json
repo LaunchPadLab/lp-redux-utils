@@ -7,10 +7,9 @@
     "start": "yarn install && yarn run build:development",
     "build": "mkdir -p lib && babel src --out-dir lib --no-comments --minified",
     "build:development": "mkdir -p lib && babel src --watch --out-dir lib",
-    "clean": "rimraf lib",
+    "clean": "rm -rf lib",
     "docs": "documentation build src/index.js -f md -o docs.md",
     "lint": "eslint src --max-warnings=0",
-    "precommit": "yarn run docs && git add docs.md",
     "prepublish": "yarn run lint && yarn run clean && yarn run build",
     "test": "jest --coverage"
   },
@@ -31,20 +30,25 @@
     "lib/"
   ],
   "devDependencies": {
-    "@launchpadlab/babel-preset": "^1.0.0",
-    "@launchpadlab/eslint-config": "^2.4.0",
-    "babel-cli": "^6.22.2",
-    "documentation": "^8.0.0",
-    "eslint": "^5.0.0",
-    "husky": "^0.14.3",
-    "jest": "^23.1.0",
-    "redux": "^4.0.0",
-    "rimraf": "^2.5.4"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@launchpadlab/babel-preset": "^2.1.1",
+    "@launchpadlab/eslint-config": "^2.7.0",
+    "documentation": "^12.1.4",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "redux": "^4.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.4"
   },
   "peerDependencies": {
     "redux": ">=2.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run docs && git add docs.md"
+    }
   }
 }
