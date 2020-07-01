@@ -35,7 +35,7 @@
     "@launchpadlab/babel-preset": "^2.1.1",
     "@launchpadlab/eslint-config": "^2.7.0",
     "documentation": "^12.1.4",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "redux": "^4.0.0"
