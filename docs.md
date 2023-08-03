@@ -2,15 +2,15 @@
 
 ### Table of Contents
 
--   [selectorForSlice][1]
-    -   [Parameters][2]
-    -   [Examples][3]
--   [setState][4]
-    -   [Parameters][5]
-    -   [Examples][6]
--   [unsetState][7]
-    -   [Parameters][8]
-    -   [Examples][9]
+*   [selectorForSlice][1]
+    *   [Parameters][2]
+    *   [Examples][3]
+*   [setState][4]
+    *   [Parameters][5]
+    *   [Examples][6]
+*   [unsetState][7]
+    *   [Parameters][8]
+    *   [Examples][9]
 
 ## selectorForSlice
 
@@ -18,7 +18,7 @@ Given the path of a certain state slice, returns a function that can be used to 
 
 ### Parameters
 
--   `slicePath` **[String][10]** Path to slice of state.
+*   `slicePath` **[String][10]** Path to slice of state.
 
 ### Examples
 
@@ -55,13 +55,13 @@ Returns **[Function][11]** A function that can be used to create state selectors
 
 ## setState
 
-A helper function for creating simple "setter" reducers. 
+A helper function for creating simple "setter" reducers.
 Given a path, it sets the state at that path to the payload of an action.
 
 ### Parameters
 
--   `path` **[String][10]** Path to the part of the state that will be set
--   `transform` **[Function][11]** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. To set the state to a constant value, simply pass the value in place of the transform function.
+*   `path` **[String][10]** Path to the part of the state that will be set
+*   `transform` **[Function][11]** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. To set the state to a constant value, simply pass the value in place of the transform function.
 
 ### Examples
 
@@ -92,7 +92,7 @@ Given a path, it calls lodash [unset ][12] on the state at that path.
 
 ### Parameters
 
--   `path` **[String][10]** Path to the part of state to unset
+*   `path` **[String][10]** Path to the part of state to unset
 
 ### Examples
 
