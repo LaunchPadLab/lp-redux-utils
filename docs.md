@@ -46,22 +46,21 @@ export { selectors }
 // These selectors can be called in mapStateToProps() like so:
 // selectors.user(state) => { name: 'test' }
 // selectors.username(state) => 'test'
-
-
-*
 ```
 
-Returns **[Function][11]** A function that can be used to create state selectors.
+Returns **SliceSelector** A function that can be used to create state selectors.
 
 ## setState
 
 A helper function for creating simple "setter" reducers.
 Given a path, it sets the state at that path to the payload of an action.
 
+Type: [Function][11]
+
 ### Parameters
 
-*   `path` **[String][10]** Path to the part of the state that will be set
-*   `transform` **[Function][11]** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. To set the state to a constant value, simply pass the value in place of the transform function.
+*   `path` **[string][10]** Path to the part of the state that will be set
+*   `transform` **StateTransform?** A function with arguments `(action, state, slice)` that can be used to transform the value that will be set. `slice` is the data, if any, that already exists in the state at `path`. The default transform function simply returns the action's payload. To set the state to a constant value, simply pass the value in place of the transform function.
 
 ### Examples
 
@@ -79,20 +78,18 @@ const reducer = handleActions({
   [doubleExistingCount]: setState('count', (action, state, count) => count * 2)
   [resetCount]: setState('count', 0)
 })
-
-*
 ```
-
-Returns **[Function][11]** A function that can be used in a reducer to handle an action.
 
 ## unsetState
 
 A helper function for creating simple reducers that "unset" a piece of state.
 Given a path, it calls lodash [unset ][12] on the state at that path.
 
+Type: [Function][11]
+
 ### Parameters
 
-*   `path` **[String][10]** Path to the part of state to unset
+*   `path` **[string][10]** Path to the part of state to unset
 
 ### Examples
 
@@ -105,8 +102,6 @@ const clearCount = createAction('CLEAR_COUNT')
 const reducer = handleActions({
   [clearCount]: unsetState('count'),
 })
-
-*
 ```
 
 Returns **[Function][11]** A function that can be used in a reducer to handle an action.

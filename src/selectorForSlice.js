@@ -5,8 +5,7 @@ import { getOr } from 'lodash/fp'
  * Given the path of a certain state slice, returns a function that can be used to create state selectors (helpful for `mapStateToProps()`).
  *
  * @param {String} slicePath - Path to slice of state.
- * @returns {Function} - A function that can be used to create state selectors.
- *
+ * @returns {SliceSelector} A function that can be used to create state selectors.
  *
  * @example
  *
@@ -34,8 +33,7 @@ import { getOr } from 'lodash/fp'
  * // selectors.user(state) => { name: 'test' }
  * // selectors.username(state) => 'test'
  *
- *
-**/
+ */
 
 export default function selectorForSlice (slicePath) {
   return function createSelector (path, defaultValue) {
@@ -44,3 +42,11 @@ export default function selectorForSlice (slicePath) {
     }
   }
 }
+
+/**
+ * @ignore
+ * @callback SliceSelector
+ * @param {string} path - A relative path
+ * @param {any=} defaultValue - A default value
+ * @returns {(state:object) => any} The value at the slice's nested path (`slicePath.path`) or the default value provided
+ */
