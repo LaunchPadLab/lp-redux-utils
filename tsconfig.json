@@ -1,0 +1,12 @@
+{
+  "include": ["src"],
+  "exclude": ["lib", "node_modules"],
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "allowJs": true,
+    "outDir": "lib/types",
+    "declarationMap": true,
+    "skipLibCheck": true
+  }
+}
